@@ -1,14 +1,14 @@
 apply plugin: 'com.android.library'
 
 android {
-    compileSdkVersion 25
-    buildToolsVersion "25.0.2"
+    compileSdkVersion project.hasProperty('compileSdkVersion') ? project.compileSdkVersion : 27
+    buildToolsVersion project.hasProperty('buildToolsVersion') ? project.buildToolsVersion : "27.0.3"
 
     defaultConfig {
         minSdkVersion 16
-        targetSdkVersion 22
-        versionCode 2
-        versionName "1.1"
+        targetSdkVersion project.hasProperty('targetSdkVersion') ? project.targetSdkVersion : 26
+        versionCode 3
+        versionName "1.1.1"
         ndk {
             abiFilters "armeabi-v7a", "x86"
         }
@@ -20,6 +20,6 @@ repositories {
 }
 
 dependencies {
-    compile 'com.facebook.react:react-native:+'
-    compile group: 'com.zendesk', name: 'sdk', version: '1.11.0.1'
+    implementation 'com.facebook.react:react-native:+'
+    implementation group: 'com.zendesk', name: 'sdk', version: '1.11.0.1'
 }
